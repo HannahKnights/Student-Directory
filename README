@@ -1,0 +1,1 @@
+This is my first Ruby project. It is about creating a student directory.
