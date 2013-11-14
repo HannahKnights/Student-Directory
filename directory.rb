@@ -1,38 +1,32 @@
-#Make note of the syntax [] are arrays {} are hashes
-
-students=[
-  {:name => "David Suchet", :cohort => :november},
-  {:name => "Meg Ryan", :cohort => :november},
-  {:name => "Agatha Christie", :cohort => :november},
-  {:name => "Walt Disney", :cohort => :november},
-  {:name => "Usain Bolt", :cohort => :november},
-  {:name => "Jeremy Kyle", :cohort => :november},
-  {:name => "David Hockney", :cohort => :november},
-  {:name => "Pat Butcher", :cohort => :november},
-  {:name => "Jim Carey", :cohort => :november},
-  {:name => "Colin Powell", :cohort => :november},
-  {:name => "Kofi Annan", :cohort => :november},
-  {:name => "Carole King", :cohort => :november},
-  {:name => "Dolly Parton", :cohort => :november}
-]
-
 def print_header
   puts "The students on my cohort at Makers Accademy"
   puts "-------------------------"
 end
 
-#Again take note of the syntax here, #{variable[hash]}
+#Define a new method for entering student first names
 
-def print(students)
-  students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+def input_students
+
+  puts "Please can you enter your first name?"
+  puts "Press return twice when you have entered all the names."
+
+  #create an empty array for student, that you will be creating the data for
+
+  students = []
+
+  name = gets.chomp
+
+  #Start a loop that will continue until return is pressed twiced and
+  #the name input is empty.
+  #Remember '!' reverses a value.
+  #Remember to put '?' after a command which expects a boolean.
+
+  while !name.empty? do
+    students << {:name => name, :cohort => :november}
+    puts "Now we have #{students.length} students on the course."
+    name = gets.chomp
   end
 end
 
-def print_footer(names)
-  puts "There are #{names.length} students on this cohort."
-end
-
 print_header
-print(students)
-print_footer(students)
+input_students
