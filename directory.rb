@@ -1,5 +1,3 @@
-student_count = 14
-
 puts "The students on my cohort at Makers Academy"
 puts "---------------"
 
@@ -19,7 +17,8 @@ student=[
 "Dolly Parton",
 ]
 
-puts student[5]
-puts student[0]
+student.each do |student|
+  puts student
+end
 #I should be able to write a ruby code to 'count' the number of student enteries and the print the result in the sentence
-puts "There are #{student_count} students." 
+puts "There are #{student.length} students." 
