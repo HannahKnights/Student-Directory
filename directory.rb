@@ -1,24 +1,34 @@
-puts "The students on my cohort at Makers Academy"
-puts "---------------"
-
-student=[
-"David Suchet",
-"Meg Ryan",
-"Agatha Christie",
-"Walt Disney",
-"Usain Bolt",
-"Jeremy Kyle",
-"David Hockney",
-"Pat Butcher",
-"Jim Carey",
-"Colin Powell",
-"Kofi Annan",
-"Carole King",
-"Dolly Parton",
+students=[
+  ["David Suchet", :november],
+  ["Meg Ryan", :november],
+  ["Agatha Christie", :november],
+  ["Walt Disney", :november],
+  ["Usain Bolt", :november],
+  ["Jeremy Kyle", :november],
+  ["David Hockney", :november],
+  ["Pat Butcher", :november],
+  ["Jim Carey", :november],
+  ["Colin Powell", :november],
+  ["Kofi Annan", :november],
+  ["Carole King", :november],
+  ["Dolly Parton", :november]
 ]
 
-student.each do |student|
-  puts student
+def print_header
+  puts "The students on my cohort at Makers Accademy"
+  puts "-------------------------"
 end
-#I should be able to write a ruby code to 'count' the number of student enteries and the print the result in the sentence
-puts "There are #{student.length} students." 
+
+def print(students)
+  students.each do |student|
+    puts "#{student[0]} (#{student[1]} cohort)"
+  end
+end
+
+def print_footer(names)
+  puts "There are #{names.length} students on this cohort."
+end
+
+print_header
+print(students)
+print_footer(students)
