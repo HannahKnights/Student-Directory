@@ -1,32 +1,45 @@
 def print_header
-  puts "The students on my cohort at Makers Accademy"
-  puts "-------------------------"
+  print "The students on my cohort at Makers Accademy\n"
+  print "-------------------------\n"
 end
 
-#Define a new method for entering student first names
+def print_students(students)
+  students.each_with_index() do |student, index|
+    print "#{index} #{student[:name]} from the #{student[:cohort]} cohort.\n"
+  end
+end
+
+def print_letter(students)
+  students.each do |student|
+    if ["A"].include? student[:name][0]
+    print "#{student[:name]} from the #{student[:cohort]} cohort.\n"
+    end
+  end
+end
+
+def print_footer(name)
+  print "There are #{name.length} students on the course.\n"
+end
 
 def input_students
 
-  puts "Please can you enter your first name?"
-  puts "Press return twice when you have entered all the names."
-
-  #create an empty array for student, that you will be creating the data for
+  print "Please can you enter your first name?\n"
+  print "Press return twice when you have entered all the names.\n"
 
   students = []
 
   name = gets.chomp
 
-  #Start a loop that will continue until return is pressed twiced and
-  #the name input is empty.
-  #Remember '!' reverses a value.
-  #Remember to put '?' after a command which expects a boolean.
-
   while !name.empty? do
     students << {:name => name, :cohort => :november}
-    puts "Now we have #{students.length} students on the course."
+    print "Now we have #{students.length} students on the course.\n"
     name = gets.chomp
   end
+  students
 end
 
+students = input_students
 print_header
-input_students
+print_students(students)
+print_footer(students)
+print_letter(students)
