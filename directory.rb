@@ -28,7 +28,7 @@ def print_students_loop(students)
   end
   student_array = student_array.reverse
   student_array.each do |x|
-    print "Student name: #{x[:name]} \n"
+    print "Student name: #{x[:first_name]} #{x[:last_name]} \n"
   end
 end
 
@@ -58,19 +58,39 @@ end
 
 
 def input_students
-  print "Please can you enter your first name?\n"
-  print "Press return twice when you have entered all the names.\n"
   
   students = []
-  
-  name = gets.chomp
 
-  until name.empty? do
-    students << {:name => name, :cohort => :november}
+  print "Press return twice when you don't have any more data to enter.\n"
+
+  print "Please can you enter your first name?\n"
+  first_name = gets.chomp
+
+  print "Please can you enter your last name?\n"
+  last_name = gets.chomp
+
+  print "What is your favourite coding language?\n"
+  language_pref = gets.chomp
+
+  until language_pref.empty? do
+
+    students << {:first_name => first_name, :last_name => last_name, :language => language_pref, :cohort => :november}
+    
     print "Now we have #{students.length} students on the course.\n"
-    name = gets.chomp
+    
+    print "Please can you enter your first name?\n"
+    first_name = gets.chomp
+    
+    print "Please can you enter your last name?\n"
+    last_name = gets.chomp
+      
+    print "What is your favourite coding language?\n"
+    language_pref = gets.chomp
+  
   end
+ 
   students
+
 end
 
 
