@@ -56,6 +56,21 @@ def print_footer(name)
   print "There are #{name.length} students on the course.\n"
 end
 
+def get_first_name
+  print "Please can you enter your first name?\n"
+  gets.chomp
+end
+
+def get_last_name
+  print "Please can you enter your last name?\n"
+  last_name = gets.chomp
+end
+
+def get_language_pref
+  print "What is your favourite programing language?"
+  gets.chomp
+  2
+end
 
 def input_students
   
@@ -63,29 +78,23 @@ def input_students
 
   print "Press return twice when you don't have any more data to enter.\n"
 
-  print "Please can you enter your first name?\n"
-  first_name = gets.chomp
+  first_name = get_first_name
 
-  print "Please can you enter your last name?\n"
-  last_name = gets.chomp
+  last_name = get_last_name
 
-  print "What is your favourite coding language?\n"
-  language_pref = gets.chomp
+  language = get_language_pref
 
-  until language_pref.empty? do
+  until language.empty? do
 
     students << {:first_name => first_name, :last_name => last_name, :language => language_pref, :cohort => :november}
     
     print "Now we have #{students.length} students on the course.\n"
     
-    print "Please can you enter your first name?\n"
-    first_name = gets.chomp
+    first_name = get_first_name
     
-    print "Please can you enter your last name?\n"
-    last_name = gets.chomp
-      
-    print "What is your favourite coding language?\n"
-    language_pref = gets.chomp
+    last_name = get_last_name
+
+  language = get_language_pref
   
   end
  
