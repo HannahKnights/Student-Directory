@@ -1,6 +1,5 @@
 @students =[]
 
-
 def print_interactive_menu
   puts "1. Input the students"
   puts "2. Show the students"
@@ -33,8 +32,8 @@ def process(selection)
   end
 end
 
-def load_students 
-  file = File.open("students.csv", "r")
+def load_students(filename = "students.csv") 
+  file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(',')
     @students << {:first_name => name, :cohort => cohort.to_sym}
@@ -42,10 +41,23 @@ def load_students
   file.close
 end
 
+def try_load_students
+  filename = ARGV.first
+  return if filename.nil?
+  if File.exists? (filename)
+    load_students (filename)
+    puts "Loaded #{@students.length} from #{filename}"
+  else
+    puts "Sorry, we are unable to find #{filename}"
+    exit
+  end
+end
+
+
 def interactive_menu
   loop do 
     print_interactive_menu
-    process(gets.chomp)
+    process(STDIN.gets.chomp)
   end
 end
 
@@ -68,38 +80,26 @@ end
 
 def get_first_name
   print "Please can you enter your first name?\n"
-  gets.chomp
+  STDIN.gets.chomp
 end
 
 def get_last_name
   print "Please can you enter your last name?\n"
-  last_name = gets.chomp
+  STDIN.gets.chomp
 end
 
 
 def input_students
-  
   print "Press return twice when you don't have any more data to enter.\n"
-
   first_name = get_first_name
-
   last_name = get_last_name
-
-
   until last_name.empty? do
-
     @students << {:first_name => first_name, :last_name => last_name, :cohort => :november}
-    
     print "Now we have #{@students.length} students on the course.\n"
-    
     first_name = get_first_name
-    
     last_name = get_last_name
-
   end
- 
   @students
-
 end
 
 def save_students
@@ -116,5 +116,6 @@ end
 
 
 print_header
+try_load_students
 interactive_menu
 print_footer(students)
