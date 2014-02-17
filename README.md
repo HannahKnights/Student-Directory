@@ -10,10 +10,7 @@ Created while studying at [Makers Academy](http://www.makersacademy.com)
 
 #### How to Use
 
-
-```shell
-ruby directory.rb
-```
+Follow the printed instructions on screen.
 
 ~~~
 $ ruby directory.rb
